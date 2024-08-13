@@ -7,10 +7,10 @@ import CommentRouter from "./controllers/comment-controller"
 
 const router = Router()
 
-router.use("/api/v1", AuthRouter)
+router.use(AuthRouter)
 
-router.use("/api/v1/users/:userId", authMiddleware,ArticleRouter)
-router.use("/api/v1/users/:userId",authMiddleware,CommentRouter)
+router.use("/users/:userId", authMiddleware,ArticleRouter)
+router.use("/users/:userId",authMiddleware,CommentRouter)
 
 
 export default router

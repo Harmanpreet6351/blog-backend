@@ -11,7 +11,7 @@ app.use(express.json());
     res.send("Hello World! from index.ts");
   });
   
-  app.use("", CommonRouter)
+  app.use("/api/v1", CommonRouter)
 
   app.listen(3000, () => {
     console.log("Server started on http://localhost:3000");
