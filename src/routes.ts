@@ -10,7 +10,7 @@ const router = Router()
 router.use(AuthRouter)
 
 router.use("/users/:userId", authMiddleware,ArticleRouter)
-router.use("/users/:userId",authMiddleware,CommentRouter)
+router.use("/users/:userId/articles/:article_id",authMiddleware,CommentRouter)
 
 
 export default router

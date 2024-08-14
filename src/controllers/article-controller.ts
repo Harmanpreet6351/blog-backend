@@ -14,7 +14,7 @@ router.post("/articles", async (req, res) => {
 
   // const currentUser = (req as AuthRequest).user
 
-  const {userId } = req.params as {[key: string]: string}
+  const { userId } = req.params as {[key: string]: string}
 
   const user = await prisma.user.findUnique({
     where: {
@@ -103,6 +103,25 @@ router.put('/articles/:article_id',async (req,res) => {
 
   return res.status(200).json({data: article})
 
+})
+
+// delete article
+
+router.delete('/articles/:article_id',async (req,res) => {
+  const { article_id } =  req.params
+
+  try {
+    const article = await prisma.article.delete({
+      where:{
+        id: Number(article_id)
+      }
+    })
+    return res.status(200).json({data: article})
+  }
+  catch(e){
+    return res.status(404).json({error: `article id : ${article_id} was not found`})
+  }
+  
 })
 
 export default router
